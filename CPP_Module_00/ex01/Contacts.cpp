@@ -1,50 +1,37 @@
 #include "phonebook.hpp"
 
-PhoneBook::PhoneBook()
+Contact::Contact()
 {
 	return;
 }
 
-PhoneBook::~PhoneBook()
+Contact::~Contact()
 {
 	return;
 }
 
-void    PhoneBook::ft_set_propertys(void)
+void    Contact::ft_set_propertys(void)
 {
-	std::string input;
-
 	std::cout << "Enter first name: ";
-	std::getline(std::cin, this->first_name);
+	std::cin >> this->first_name;
 	std::cout << "Enter last name: ";
-	std::getline(std::cin, this->last_name);
+	std::cin >> this->last_name;
 	std::cout << "Enter nickname: ";
-	std::getline(std::cin, this->nickname);
-	std::cout << "Enter login: ";
-	std::getline(std::cin, this->login);
-	std::cout << "Enterpostal address: ";
-	std::getline(std::cin, this->postal_address);
-	std::cout << "Enter email address: ";
-	std::getline(std::cin, this->email_address);
+	std::cin >> this->nickname;
 	std::cout << "Enter phone number: ";
-	std::getline(std::cin, this->phone_number);
-	std::cout << "Enter birthday date: ";
-	std::getline(std::cin, this->birthday_date);
-	std::cout << "Enter favorit meal: ";
-	std::getline(std::cin, this->favorite_meal);
-	std::cout << "Enter underwear color: ";
-	std::getline(std::cin, this->underwear_color);
+	std::cin >> this->phone_number;
 	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, this->darkest_secret);
+	std::cin >> this->darkest_secret;
 	std::cout << "The contact successfuly created" << std::endl;
 }
 
-void    PhoneBook::ft_get_propertys(PhoneBook book[8], int contact_count)
+void    Contact::ft_get_propertys(Contact book[8], int contact_count)
 {
 	int 			i;
-	std::string 	index;
+	int			 	index;
 
 	i = 0;
+	index = 0;
 	std::cout << "     Index|" << "First Name|" << " Last Name|" << "  Nickname" << std::endl;
 	while (i < contact_count)
 	{
@@ -61,66 +48,41 @@ void    PhoneBook::ft_get_propertys(PhoneBook book[8], int contact_count)
 	while (1)
 	{
 		std::cout << "Enter the index: ";
-		std::getline(std::cin, index);
-		if (index.size() == 1 && index.at(0) >= '0' && index.at(0) + 1 <= contact_count + '0')
+		std::cin >> index;
+		if (!std::cin.fail() && index >= 0 && index < contact_count)
 			break;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+		}
 		std::cout << "Enter valid number" << std::endl;
 		continue;
 	}
-	ft_print_info(book[atoi(index.c_str())]);
+	ft_print_info(book[index]);
 }
 
-std::string PhoneBook::ft_get_first_name(void)
+std::string Contact::ft_get_first_name(void)
 {
 	return (this->first_name);
 }
 
-std::string PhoneBook::ft_get_last_name(void)
+std::string Contact::ft_get_last_name(void)
 {
 	return (this->last_name);
 }
 
-std::string PhoneBook::ft_get_nickname(void)
+std::string Contact::ft_get_nickname(void)
 {
 	return (this->nickname);
 }
 
-std::string PhoneBook::ft_get_login(void)
-{
-	return (this->login);
-}
-
-std::string PhoneBook::ft_get_postal_address(void)
-{
-	return (this->postal_address);
-}
-
-std::string PhoneBook::ft_get_email_address(void)
-{
-	return (this->email_address);
-}
-
-std::string PhoneBook::ft_get_phone_number(void)
+std::string Contact::ft_get_phone_number(void)
 {
 	return (this->phone_number);
 }
 
-std::string PhoneBook::ft_get_birthday_date(void)
-{
-	return (this->birthday_date);
-}
-
-std::string PhoneBook::ft_get_favorite_meal(void)
-{
-	return (this->favorite_meal);
-}
-
-std::string PhoneBook::ft_get_underwear_color(void)
-{
-	return (this->underwear_color);
-}
-
-std::string PhoneBook::ft_get_darkest_secret(void)
+std::string Contact::ft_get_darkest_secret(void)
 {
 	return (this->darkest_secret);
 }

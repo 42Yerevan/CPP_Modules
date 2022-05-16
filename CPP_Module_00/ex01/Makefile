@@ -1,8 +1,8 @@
-NAME = phonebook
+NAME = Contact
 SRCS = ${shell find "." -name "*.cpp"}
 OBJS = $(SRCS:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror
-CLANG = clang++
+CLANG = c++ -std=c++98
 RM = rm -rf
 
 %.o: %.cpp
