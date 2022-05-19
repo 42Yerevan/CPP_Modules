@@ -1,4 +1,4 @@
-NAME = replace
+NAME = karen
 SRCS = ${shell find "." -name "*.cpp"}
 OBJS = $(SRCS:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror
